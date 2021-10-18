@@ -6,18 +6,17 @@
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/gh/spaceify/cbor-js@master/cbor.js" integrity="sha512-0ABB8mRQj73e8+aaUzonPYnP34/YsUCf6SGUJp/pj5BUXttDonDIvCI7XuC7C27Qem6yRpzIzTlq8kJSlUNjoQ==" crossorigin="anonymous"></script>
+        <script src="WebSocketAsPromised.bundle.js"></script>
         <script src="RemoteAPIClient.js"></script>
         <script>
-            var client = new RemoteAPIClient();
+            var client = new RemoteAPIClient('localhost', 23050, 'cbor');
             var sim = null;
-            client.websocket.addEventListener('open', function(event) {
-                client.getObject('sim', function(r) {
-                    sim = r;
-                    sim.getObjectHandle(['Floor'], function(r) {
-                        console.log(`sim.getObjectHandle("Floor") = ${r}`);
-                    });
-                });
+            client.websocket.onOpen.addListener(async function(event) {
+                sim = await client.getObject('sim');
+                var [h] = await sim.getObjectHandle('Floor');
+                console.log(`sim.getObjectHandle("Floor") = ${h}`);
             });
+            client.websocket.open();
         </script>
     </body>
 </html>

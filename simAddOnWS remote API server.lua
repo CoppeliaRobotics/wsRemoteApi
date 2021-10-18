@@ -34,6 +34,7 @@ function wsRemoteApi.handleRequest(req)
         print('request received:',req)
     end
     local resp={}
+    resp['id']=req['id']
     if req['func']~=nil and req['func']~='' then
         local func=wsRemoteApi.getField(req['func'])
         local args=req['args'] or {}
