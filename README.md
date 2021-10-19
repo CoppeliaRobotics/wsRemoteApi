@@ -34,6 +34,7 @@ See also the example client `example.html`.
 A request is an object with fields:
 - `func` (string) the function name to call;
 - `args` (array) the arguments to the function;
+- (optional) `id` (string) an identifier to correlate request with response.
 
 Example:
 
@@ -47,9 +48,10 @@ Example:
 #### Response
 
 A response is an object with fields:
+- (optional) `id` (string) set to the same value of the request's `id` field;
 - `success` (boolean) `true` if the call succeeded, in which case the `ret` field will be set, or `false` if the call failed, in which case the `error` field will be set;
 - `ret` (array) the return values of the function;
-- `error` (string) the error message;
+- `error` (string) the error message.
 
 Example:
 
