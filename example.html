@@ -9,14 +9,13 @@
         <script src="WebSocketAsPromised.bundle.js"></script>
         <script src="RemoteAPIClient.js"></script>
         <script>
-            var client = new RemoteAPIClient('localhost', 23050, 'cbor');
-            var sim = null;
-            client.websocket.onOpen.addListener(async function(event) {
-                sim = await client.getObject('sim');
+            (async () => {
+                var client = new RemoteAPIClient('localhost', 23050, 'json');
+                await client.websocket.open();
+                var sim = await client.getObject('sim');
                 var [h] = await sim.getObjectHandle('Floor');
                 console.log(`sim.getObjectHandle("Floor") = ${h}`);
-            });
-            client.websocket.open();
+            })();
         </script>
     </body>
 </html>
