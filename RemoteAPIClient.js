@@ -12,7 +12,7 @@ class RemoteAPIClient {
         if(this.codec == 'cbor') {
             //this.websocket.binaryType = "arraybuffer";
             packMessage = data => CBOR.encode(data);
-            unpackMessage = data => CBOR.decode(data.arrayBuffer());
+            unpackMessage = async data => CBOR.decode(await data.arrayBuffer());
         } else if(this.codec == "json") {
             packMessage = data => JSON.stringify(data);
             unpackMessage = data => JSON.parse(data);
