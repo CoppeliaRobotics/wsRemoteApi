@@ -40,8 +40,8 @@ Example:
 
 ```json
 {
-    "func": "sim.getObjectHandle",
-    "args": ["Floor"]
+    "func": "sim.getObject",
+    "args": ["/Floor"]
 }
 ```
 
@@ -67,6 +67,6 @@ In case of error, the exception message will be present:
 ```json
 {
     "success": false,
-    "error": "Object does not exist. (in function 'sim.getObjectHandle')"
+    "error": "Object does not exist. (in function 'sim.getObject')"
 }
 ```

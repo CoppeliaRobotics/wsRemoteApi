@@ -18,8 +18,8 @@
                 await client.websocket.open();
                 log('Getting proxy object "sim"...');
                 var sim = await client.getObject('sim');
-                log('Calling sim.getObjectHandle("Floor")...');
-                var [h] = await sim.getObjectHandle('Floor');
+                log('Calling sim.getObject("/Floor")...');
+                var [h] = await sim.getObject('/Floor');
                 log(`Result: ${h}`);
             })();
         </script>
