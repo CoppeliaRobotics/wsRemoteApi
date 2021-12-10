@@ -3,7 +3,7 @@
 const WebSocketAsPromised = require('websocket-as-promised');
 
 class RemoteAPIClient {
-    constructor(host = 'localhost', port = 23050, codec = "cbor") {
+    constructor(host = 'localhost', port = 23050, codec = "cbor", opts = {}) {
         this.host = host;
         this.port = port;
         this.codec = codec;
@@ -17,17 +17,17 @@ class RemoteAPIClient {
             packMessage = data => JSON.stringify(data);
             unpackMessage = data => JSON.parse(data);
         }
-        this.websocket = new WebSocketAsPromised(
-            `ws://${this.host}:${this.port}`,
-            {
-                packMessage,
-                unpackMessage,
-                // attach requestId to message as `id` field
-                attachRequestId: (data, requestId) => Object.assign({id: requestId}, data),
-                // read requestId from message `id` field
-                extractRequestId: data => data && data.id,
-            }
-        );
+        var wsOpts = {
+            packMessage,
+            unpackMessage,
+            // attach requestId to message as `id` field
+            attachRequestId: (data, requestId) => Object.assign({id: requestId}, data),
+            // read requestId from message `id` field
+            extractRequestId: data => data && data.id,
+        };
+        for(var k in opts)
+            wsOpts[k] = opts[k];
+        this.websocket = new WebSocketAsPromised(`ws://${this.host}:${this.port}`, wsOpts);
     }
 
     async call(func, args) {
