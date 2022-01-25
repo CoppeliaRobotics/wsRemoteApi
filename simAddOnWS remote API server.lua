@@ -96,7 +96,7 @@ function wsRemoteApi.publishStepCount()
 end
 
 function sysCall_info()
-    return {autoStart=true,menu='Connectivity\nWebSockets remote API server'}
+    return {autoStart=true,menu='Connectivity\nWebSocket remote API server'}
 end
 
 function sysCall_init()
@@ -106,14 +106,14 @@ function sysCall_init()
     end
     port=sim.getNamedInt32Param('wsRemoteApi.port') or 23050
     if wsRemoteApi.verbose()>0 then
-        sim.addLog(sim.verbosity_scriptinfos,string.format('WebSockets Remote API server starting (port=%d)...',port))
+        sim.addLog(sim.verbosity_scriptinfos,string.format('WebSocket Remote API server starting (port=%d)...',port))
     end
     json=require 'dkjson'
     cbor=require 'org.conman.cbor'
     wsServer=simWS.start(port)
     simWS.setMessageHandler(wsServer,'onWSMessage')
     if wsRemoteApi.verbose()>0 then
-        sim.addLog(sim.verbosity_scriptinfos,'WebSockets Remote API server started')
+        sim.addLog(sim.verbosity_scriptinfos,'WebSocket Remote API server started')
     end
     stepping=false
 end
@@ -122,7 +122,7 @@ function sysCall_cleanup()
     if not simWS then return end
     if wsServer then simWS.stop(wsServer) end
     if wsRemoteApi.verbose()>0 then
-        sim.addLog(sim.verbosity_scriptinfos,'WebSockets Remote API server stopped')
+        sim.addLog(sim.verbosity_scriptinfos,'WebSocket Remote API server stopped')
     end
 end
 

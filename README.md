@@ -1,6 +1,6 @@
-# WebSockets Remote API for CoppeliaSim
+# WebSocket Remote API for CoppeliaSim
 
-The WebSockets Remote API requires the [WS plugin](https://github.com/CoppeliaRobotics/simExtWS).
+The WebSocket Remote API requires the [WS plugin](https://github.com/CoppeliaRobotics/simExtWS).
 
 ### Table of contents
 
