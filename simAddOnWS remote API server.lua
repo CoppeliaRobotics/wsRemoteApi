@@ -109,6 +109,7 @@ function sysCall_init()
         sim.addLog(sim.verbosity_scriptinfos,string.format('WebSocket Remote API server starting (port=%d)...',port))
     end
     json=require 'dkjson'
+    -- cbor=require 'cbor' -- encodes strings as buffers, always. DO NOT USE!!
     cbor=require 'org.conman.cbor'
     wsServer=simWS.start(port)
     simWS.setMessageHandler(wsServer,'onWSMessage')
