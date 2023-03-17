@@ -1,7 +1,7 @@
 wsRemoteApi={}
 
 function wsRemoteApi.verbose()
-    return tonumber(sim.getStringNamedParam('wsRemoteApi.verbose') or '0')
+    return sim.getNamedInt32Param('wsRemoteApi.verbose') or 0
 end
 
 function wsRemoteApi.info(obj)
