@@ -96,7 +96,7 @@ function wsRemoteApi.publishStepCount()
 end
 
 function sysCall_info()
-    return {autoStart=not not simWS,menu='Connectivity\nWebSocket remote API server'}
+    return {autoStart=sim.getNamedBoolParam('wsRemoteApi.autoStart')~=false,menu='Connectivity\nWebSocket remote API server'}
 end
 
 function sysCall_init()
