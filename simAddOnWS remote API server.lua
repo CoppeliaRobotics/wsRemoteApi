@@ -100,10 +100,7 @@ function sysCall_info()
 end
 
 function sysCall_init()
-    if not simWS then
-        sim.addLog(sim.verbosity_errors,'wsRemoteApi: the WS plugin is not available')
-        return {cmd='cleanup'}
-    end
+    simWS=require'simWS'
     port=sim.getNamedInt32Param('wsRemoteApi.port') or 23050
     if wsRemoteApi.verbose()>0 then
         sim.addLog(sim.verbosity_scriptinfos,string.format('WebSocket Remote API server starting (port=%d)...',port))
