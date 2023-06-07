@@ -1,3 +1,5 @@
+sim=require'sim'
+
 wsRemoteApi={}
 
 function wsRemoteApi.verbose()
