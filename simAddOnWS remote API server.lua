@@ -6,6 +6,10 @@ function wsRemoteApi.verbose()
     return sim.getNamedInt32Param('wsRemoteApi.verbose') or 0
 end
 
+function wsRemoteApi.require(name)
+    _G[name]=require(name)
+end
+
 function wsRemoteApi.info(obj)
     if type(obj)=='string' then obj=wsRemoteApi.getField(obj) end
     if type(obj)~='table' then return obj end
