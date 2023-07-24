@@ -44,6 +44,11 @@ class RemoteAPIClient {
         return this.getObject_(name, r[0]);
     }
 
+    async require(name) {
+        await this.call('wsRemoteApi.require', [name]);
+        return await this.getObject(name);
+    }
+
     getObject_(name, _info) {
         const client = this;
         var ret = {}
