@@ -14,4 +14,4 @@ set(CMAKE_MODULE_PATH
     ${COPPELIASIM_INCLUDE_DIR}/cmake)
 find_package(CoppeliaSim 4.5.1.7 REQUIRED)
 
-coppeliasim_add_addon("addOns/simAddOnWS remote API server.lua")
+coppeliasim_add_addon("addOns/WS remote API server.lua")
