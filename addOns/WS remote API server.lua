@@ -73,7 +73,7 @@ function onWSMessage(server, connection, message)
 
     -- if first byte is '{', it *might* be a JSON payload
     if rawReq:byte(1) == 123 then
-        local req, ln, err = json.decode(rawReq)
+        local req, ln, err = json.decode(tostring(rawReq))
         if req ~= nil then
             local resp = wsRemoteApi.handleRequest(req)
             resp = json.encode(resp)
@@ -83,7 +83,7 @@ function onWSMessage(server, connection, message)
     end
 
     -- if we are here, it should be a CBOR payload
-    local status, req = pcall(cbor.decode, rawReq)
+    local status, req = pcall(cbor.decode, tostring(rawReq))
     if status then
         local resp = wsRemoteApi.handleRequest(req)
         resp = cbor.encode(resp)
