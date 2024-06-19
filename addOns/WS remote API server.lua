@@ -111,7 +111,9 @@ end
 
 function sysCall_init()
     simWS = require 'simWS'
-    port = sim.getNamedInt32Param('wsRemoteApi.port') or 23050
+    local defaultPort = 23050 + sim.getInt32Param(sim.intparam_processid)
+    local port = sim.getNamedInt32Param('wsRemoteApi.port') or defaultPort
+    sim.setNamedInt32Param('wsRemoteApi.port', port)
     if wsRemoteApi.verbose() > 0 then
         sim.addLog(
             sim.verbosity_scriptinfos,
