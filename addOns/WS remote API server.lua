@@ -114,12 +114,12 @@ function sysCall_init()
     local defaultPort = 23050 + sim.getInt32Param(sim.intparam_processid)
     local port = sim.getNamedInt32Param('wsRemoteApi.port') or defaultPort
     sim.setNamedInt32Param('wsRemoteApi.port', port)
-    if wsRemoteApi.verbose() > 0 then
+--    if wsRemoteApi.verbose() > 0 then
         sim.addLog(
             sim.verbosity_scriptinfos,
             string.format('WebSocket Remote API server starting (port=%d)...', port)
         )
-    end
+--    end
     json = require 'dkjson'
     -- cbor=require 'cbor' -- encodes strings as buffers, always. DO NOT USE!!
     cbor = require 'org.conman.cbor'
