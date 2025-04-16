@@ -104,7 +104,6 @@ end
 
 function sysCall_info()
     return {
-        autoStart = sim.getNamedBoolParam('wsRemoteApi.autoStart') ~= false,
         menu = 'Connectivity\nWebSocket remote API server',
     }
 end
@@ -181,3 +180,5 @@ end
 function step()
     go = true
 end
+
+require('addOns.autoStart').setup{ns = 'wsRemoteApi'}
