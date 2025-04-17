@@ -181,4 +181,4 @@ function step()
     go = true
 end
 
-require('addOns.autoStart').setup{ns = 'wsRemoteApi'}
+require('addOns.autoStart').setup{ns = 'wsRemoteApi', default = true}
