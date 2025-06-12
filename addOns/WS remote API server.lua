@@ -1,4 +1,8 @@
-sim = require 'sim'
+local sim = require 'sim'
+local simWS
+local json
+local cbor
+
 _removeLazyLoaders()
 
 wsRemoteApi = {}
