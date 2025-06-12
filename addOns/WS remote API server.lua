@@ -3,7 +3,7 @@ local simWS
 local json
 local cbor
 
-_removeLazyLoaders()
+if _removeLazyLoaders then _removeLazyLoaders() end
 
 wsRemoteApi = {}
 
