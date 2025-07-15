@@ -50,20 +50,18 @@ function wsRemoteApi.handleRequest(req)
         if not func then
             resp['error'] = 'No such function: ' .. req['func']
         else
-            local status, retvals = pcall(
-                                        function()
-                    local ret = {func(unpack(args))}
-                    return ret
-                end
+            local status, retvals = pcall(function()
+                local ret = {func(table.unpack(args))}
+                return ret
+            end
                                     )
             resp[status and 'ret' or 'error'] = retvals
         end
     elseif req['eval'] ~= nil and req['eval'] ~= '' then
-        local status, retvals = pcall(
-                                    function()
-                local ret = {loadstring('return ' .. req['eval'])()}
-                return ret
-            end
+        local status, retvals = pcall(function()
+            local ret = {loadstring('return ' .. req['eval'])()}
+            return ret
+        end
                                 )
         resp[status and 'ret' or 'error'] = retvals
     end
