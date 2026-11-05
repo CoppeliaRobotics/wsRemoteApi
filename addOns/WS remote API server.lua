@@ -123,7 +123,7 @@ function sysCall_init()
 --    end
     json = require 'dkjson'
     -- cbor=require 'cbor' -- encodes strings as buffers, always. DO NOT USE!!
-    cbor = require 'simCBOR'
+    cbor = require 'sim.cbor'
     wsServer = simWS.start(port)
     simWS.setMessageHandler(wsServer, 'onWSMessage')
     if wsRemoteApi.verbose() > 0 then
